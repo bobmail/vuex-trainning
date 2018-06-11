@@ -4,15 +4,19 @@
     <hr>
     <h3>{{$store.state.count}} - {{count}}</h3>
     <p>
-      <button @click="$store.commit('add')">+</button>
+      <!--
+      <button @click="$store.commit('add',10)">+</button>
       <button @click="$store.commit('reduce')">-</button>
+      -->
+      <button @click="add(10)">+</button>
+      <button @click="reduce">-</button>
     </p>
   </div>
 </template>
 
 <script>
 import store from '@/vuex/store'
-import {mapState} from 'vuex'
+import {mapState, mapMutations} from 'vuex'
 
 export default {
   data () {
@@ -32,6 +36,7 @@ export default {
   }),
   */
   computed: mapState(['count']),
+  methods: mapMutations(['add', 'reduce']),
   store
 }
 </script>

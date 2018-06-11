@@ -4,11 +4,11 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  count: 1
+  count: 10
 }
 const mutations = {
-  add (state) {
-    state.count++
+  add (state, n) {
+    state.count += n
   },
   reduce (state) {
     state.count--
