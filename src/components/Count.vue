@@ -11,12 +11,16 @@
       <button @click="add(10)">+</button>
       <button @click="reduce">-</button>
     </p>
+    <p>
+      <button @click="addAsync">+</button>
+      <button @click="reduceAsync">-</button>
+    </p>
   </div>
 </template>
 
 <script>
 import store from '@/vuex/store'
-import {mapState, mapMutations, mapGetters} from 'vuex'
+import {mapState, mapMutations, mapActions} from 'vuex'
 
 export default {
   data () {
@@ -39,10 +43,14 @@ export default {
   */
   // computed: mapState(['count']),
   computed: {
-    ...mapState(['count']),
-    ...mapGetters(['count'])
+    ...mapState(['count'])
+    //  ...mapGetters(['count'])
   },
-  methods: mapMutations(['add', 'reduce']),
+  //  methods: mapMutations(['add', 'reduce']),
+  methods: {
+    ...mapMutations(['add', 'reduce']),
+    ...mapActions(['addAsync', 'reduceAsync'])
+  },
   store
 }
 </script>

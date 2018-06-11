@@ -20,9 +20,22 @@ const getters = {
     return state.count
   }
 }
+const actions = {
+  addAsync (context) {
+    context.commit('add', 10)
+    setTimeout(() => {
+      context.commit('reduce')
+    }, 3000)
+    console.log('before reduce, I am async')
+  },
+  reduceAsync ({commit}) {
+    commit('reduce')
+  }
+}
 
 export default new Vuex.Store({
   state,
   mutations,
-  getters
+  getters,
+  actions
 })
